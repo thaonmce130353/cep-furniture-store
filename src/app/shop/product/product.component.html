@@ -1,0 +1,59 @@
+<section class="products">
+  <h1 class="flex
+             items-center justify-between
+             mb-8 pb-6
+             border-b border-t-0 border-r-0 border-l-0 border-solid
+             title">
+    <span class="text-4xl text-green-900 font-bold">our products</span>
+  </h1>
+
+  <div>
+    <button
+      class="text-3xl w-44 text-white bg-btn-green hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium px-4 py-2 text-center inline-flex items-center"
+      type="button" (click)="toggleDropdown()">Sort By &nbsp;<i class="fas fa-caret-down"></i></button>
+    <label class="inline-flex items-center ml-10">
+      <span class="mr-4 text-2xl">New </span>
+      <input type="checkbox" (change)="onChangeNewChecked($event)" [checked]="isNewChecked" />
+    </label>
+  </div>
+
+
+  <!-- Dropdown menu -->
+  <div class="absolute bg-white text-base z-100 list-none divide-y divide-gray-100 rounded shadow w-44"
+    [class.hidden]="isToggle">
+    <ul class="py-1 cursor-pointer" [class.active]="sortBy=='price' && sortValue==1">
+      <li>
+        <a (click)="handleSortBy('price', 1)" class="text-2xl hover:bg-gray-100 text-gray-700 block px-4 py-2">Price
+          &nbsp;
+          <i class="fas fa-arrow-up"></i></a>
+      </li>
+    </ul>
+    <div class="py-1 cursor-pointer" [class.active]="sortBy=='price' && sortValue==-1">
+      <a (click)="handleSortBy('price', -1)" class="text-2xl hover:bg-gray-100 text-gray-700 block px-4 py-2">Price
+        &nbsp;
+        <i class="fas fa-arrow-down"></i></a>
+    </div>
+  </div>
+
+  <div *ngIf="keyword && products.length!==0" class="text-2xl font-semibold
+  mb-10 mt-6 px-4 py-4 bg-light-bg w-full">
+    Result for "{{keyword}}" !</div>
+  <div class="grid grid-cols-product gap-6
+              mb-10 mt-7 box-container">
+    <!-- product items -->
+    <div
+      *ngFor="let product of products | paginate: { itemsPerPage: limit, currentPage: page, totalItems: totalProduct }">
+      <app-product-item [Product]="product"></app-product-item>
+    </div>
+    <div [class.hidden]="products.length !== 0">
+      <span class="text-2xl font-medium rounded-2rem bg-red-100 py-4 px-6">Do not have any
+        product to display !</span>
+    </div>
+  </div>
+  <div class="mb-20">
+    <pagination-controls (pageChange)="onChangePage($event)" (pageBoundsCorrection)="onChangePage($event)"
+      class="float-right text-3xl pt-3 px-4">
+    </pagination-controls>
+  </div>
+
+</section>

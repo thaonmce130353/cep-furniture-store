@@ -1,0 +1,9 @@
+$dark-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.5);
+
+.login-form {
+  &.active {
+    right: 0;
+    box-shadow: $dark-shadow;
+    transition: 0.4s linear;
+  }
+}

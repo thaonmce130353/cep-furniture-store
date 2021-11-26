@@ -1,0 +1,46 @@
+<div class="fixed
+            top-0 -right-full
+            z-900 w-140 h-100vh
+            bg-gray-100
+            p-8 flex
+            items-center
+            justify-center login-form">
+  <form (ngSubmit)="onSubmit()" [formGroup]="formLogin" class="p-7 border border-solid border-green-800">
+    <h3 class="text-4xl pb-4 text-green-800">login form</h3>
+    <input type="email" placeholder="enter your email" class="w-full
+                  normal-case text-2xl
+                  text-green-900
+                  py-4 px-5
+                  border border-solid border-green-900
+                  my-3 mx-0 box" formControlName="txtUsername">
+    <div *ngIf="username.invalid && (formLogin.dirty || formLogin.touched)">
+      <div *ngIf="username.errors?.['required']" class="text-red-700 text-xl mb-2">
+        Enter your username !
+      </div>
+    </div>
+
+    <input type="password" placeholder="enter your password" class="w-full
+                  normal-case text-2xl
+                text-green-900
+                  py-4 px-5
+                  border border-solid border-green-900
+                  my-3 mx-0 box" formControlName="txtPassword">
+    <div *ngIf="password.invalid && (formLogin.dirty || formLogin.touched)">
+      <div *ngIf="password.errors?.['required']" class="text-red-700 text-xl mb-2">
+        Enter your password !
+      </div>
+    </div>
+
+    <div class="flex items-center gap-2">
+      <input type="checkbox" name="" id="remember-me" formControlName="cbRememberMe">
+      <label for="remember-me" class="pb-1 cursor-pointer text-2xl">remember me</label>
+    </div>
+    <input type="submit" value="login now" class="mt-4 mr-0 w-full text-center btn">
+    <p class="pt-4 text-2xl text-gray-500">forget password?
+      <a class="text-green-900 hover:underline" href="#">click here</a>
+    </p>
+    <p class="pt-4 text-2xl text-gray-500">don't have an account?
+      <a class="text-green-900 hover:underline" href="#">create now</a>
+    </p>
+  </form>
+</div>

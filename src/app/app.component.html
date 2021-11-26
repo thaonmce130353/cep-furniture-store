@@ -1,0 +1,27 @@
+<!-- header -->
+<app-header [isManagePageChecked]="isManagePage"></app-header>
+<!-- closer btn  -->
+<div id="closer" class="fas fa-times
+                        fixed
+                        top-6 right-8
+                        text-7xl
+                        cursor-pointer
+                        z-1000
+                        text-green-700
+                        hidden
+                        hover:text-gray-500"></div>
+<!-- navbar  -->
+<app-navbar></app-navbar>
+<!-- shopping cart  -->
+<app-cart></app-cart>
+<!-- login form  -->
+<app-login-form></app-login-form>
+
+<router-outlet></router-outlet>
+
+<!-- footer section  -->
+<app-footer></app-footer>
+
+<section class="text-center text-2xl text-gray-100 bg-green-800">
+  created by mr. web designer | all rights reserved!
+</section>

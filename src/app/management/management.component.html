@@ -1,0 +1,144 @@
+<!-- <section>
+  <p-table #productTable [value]="products" responsiveLayout="scroll" [globalFilterFields]="['name']" [paginator]="true"
+    [rows]="2" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]">
+    <ng-template pTemplate="caption">
+      <div class="p-d-flex">
+        <span
+          class="w-1/2 left-1/4 bg-white rounded-2rem py-3 px-4 text-xl p-input-icon-left p-ml-auto border border-solid border-green-900">
+          <i class="fas fa-search"></i>
+          <input pInputText type="text" (input)="productTable.filterGlobal($any($event.target).value, 'contains')"
+            placeholder="Search keyword" class="bg-white w-full pl-6" />
+        </span>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr class="text-xl">
+        <th pSortableColumn="id">Id<p-sortIcon field="id"></p-sortIcon>
+        </th>
+        <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon>
+        </th>
+        <th pSortableColumn="price">Price<p-sortIcon field="price"></p-sortIcon>
+        </th>
+        <th pSortableColumn="quantity">Quantity <p-sortIcon field="quantity"></p-sortIcon>
+        </th>
+        <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon>
+        </th>
+        <th>Manage &nbsp;
+          <span class="bg-btn-green p-2 text-white cursor-pointer rounded-2rem">
+            ADD &nbsp;<i class="pi pi-plus" style="font-size: 1.25rem;"></i>
+          </span>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-product>
+      <tr class="text-xl">
+        <td>{{product.id}}</td>
+        <td>{{product.name}}</td>
+        <td>{{product.price}}</td>
+        <td>{{product.quantity}}</td>
+        <td>{{product.status== 1 ? 'Yes'
+          : 'No'}}
+        </td>
+        <td>
+          <span>
+            <i class="pi pi-eye cursor-pointer text-green-800 p-4 hover:bg-green-100 rounded-2rem"
+              style="font-size: 1.25rem;"></i>
+          </span>
+          <span>
+            <i class="pi pi-pencil cursor-pointer text-blue-800 p-4 hover:bg-blue-100 rounded-2rem"
+              style="font-size: 1.25rem;"></i>
+          </span>
+          <span>
+            <i class="pi pi-trash cursor-pointer text-red-800 p-4 hover:bg-red-100 rounded-2rem"
+              style="font-size: 1.25rem;"></i>
+          </span>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</section> -->
+
+<section>
+  <div class="flex flex-col">
+    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+      <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+        <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+              <tr>
+                <th scope="col" class="px-6 py-3 text-left text-xl font-bold text-gray-700 uppercase tracking-wider">
+                  Id
+                </th>
+                <th scope="col" class="px-6 py-3 text-left text-xl font-bold text-gray-700 uppercase tracking-wider">
+                  Name
+                </th>
+                <th scope="col" class="px-6 py-3 text-left text-xl font-bold text-gray-700 uppercase tracking-wider">
+                  Price
+                </th>
+                <th scope="col" class="px-6 py-3 text-left text-xl font-bold text-gray-700 uppercase tracking-wider">
+                  Quantity
+                </th>
+                <th scope="col" class="px-6 py-3 text-left text-xl font-bold text-gray-700 uppercase tracking-wider">
+                  Status
+                </th>
+                <th scope="col" class="px-6 py-3 text-left text-xl font-bold text-gray-700 uppercase tracking-wider">
+                  Manage <span class="bg-btn-green p-2 text-white cursor-pointer rounded-2rem">
+                    ADD &nbsp;<i class="pi pi-plus" style="font-size: 1.25rem;"></i>
+                  </span>
+                </th>
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-xl text-gray-900">1</div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="flex items-center">
+                    <div class="flex-shrink-0 h-10 w-10">
+                      <img class="h-10 w-10 rounded-full"
+                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60"
+                        alt="">
+                    </div>
+                    <div class="ml-4">
+                      <div class="text-xl font-medium text-gray-900">
+                        Jane Cooper
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-xl text-gray-900">500$</div>
+                </td>
+
+                <td class="px-6 py-4 whitespace-nowrap text-xl text-gray-900">
+                  10
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <span
+                    class="px-2 inline-flex text-xl leading-5 font-semibold rounded-5rem bg-green-100 text-green-800">
+                    Active
+                  </span>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <span>
+                    <i class="pi pi-eye cursor-pointer text-green-800 p-4 hover:bg-green-100 rounded-2rem"
+                      style="font-size: 1.50rem;"></i>
+                  </span>
+                  <span>
+                    <i class="pi pi-pencil cursor-pointer text-blue-800 p-4 hover:bg-blue-100 rounded-2rem"
+                      style="font-size: 1.50rem;"></i>
+                  </span>
+                  <span>
+                    <i class="pi pi-trash cursor-pointer text-red-800 p-4 hover:bg-red-100 rounded-2rem"
+                      style="font-size: 1.50rem;"></i>
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

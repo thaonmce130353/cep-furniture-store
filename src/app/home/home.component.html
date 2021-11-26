@@ -1,0 +1,65 @@
+<!-- home section starts  -->
+<section class="px-9 md:px-16 lg:px-52 relative">
+  <div class="slides-container">
+    <div class="items-center flex-wrap gap-6 hidden active-slide slide">
+      <div class="flex-40 content ">
+        <span class="text-3xl md:text-4xl text-gray-500">new arrivals</span>
+        <h3 class="text-4xl md:text-6xl xl:text-8xl text-green-900 pt-2">flexible chair</h3>
+        <p class="text-2xl text-gray-500 pt-2 pr-0">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+          Consequatur quisquam, magnam enim sed debitis
+          perspiciatis.</p>
+        <a href="#" class="btn">shop now</a>
+      </div>
+      <div class="pt-12 pr-0 image">
+        <img src="../../assets/images/home-img-1.png" alt="">
+      </div>
+    </div>
+
+    <div class="items-center flex-wrap gap-6 hidden slide">
+      <div class="flex-40 content ">
+        <span class="text-3xl md:text-4xl text-gray-500">new arrivals 2</span>
+        <h3 class="text-4xl md:text-6xl xl:text-8xl text-green-900 pt-2">flexible chair</h3>
+        <p class="text-2xl text-gray-500 pt-2 pr-0">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+          Consequatur quisquam, magnam enim sed debitis
+          perspiciatis.</p>
+        <a href="#" class="btn">shop now</a>
+      </div>
+      <div class="pt-12 pr-0 image">
+        <img src="../../assets/images/home-img-2.png" alt="">
+      </div>
+    </div>
+  </div>
+
+  <div id="slide-next" class="fas fa-angle-right
+                              right-32
+                              absolute
+                              -translate-y-1/2
+                              h-20 w-20
+                              text-5xl leading-15
+                              shadow
+                              border-2 border-solid border-green-900
+                              text-center bg-white
+                              cursor-pointer
+                              hover:bg-green-700 hover:text-white
+                              md:right-36
+                              lg:top-96 lg:right-8" (click)="slideNext()">
+  </div>
+  <div id="slide-prev" class="fas fa-angle-left
+                              left-auto right-56
+                              absolute
+                              -translate-y-1/2
+                              h-20 w-20
+                              text-5xl leading-15
+                              shadow
+                              border-2 border-solid border-green-900
+                              text-center bg-white
+                              cursor-pointer
+                              hover:bg-green-700 hover:text-white
+                              md:right-60
+                              lg:top-96 lg:left-8" (click)="slidePrev()"></div>
+
+</section>
+<!-- home section ends -->
+
+<!-- banner -->
+<app-banner></app-banner>

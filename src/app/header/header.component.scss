@@ -1,0 +1,20 @@
+$green: #244d4d;
+$light-color: #779;
+
+.header {
+  .icons div {
+    margin-left: 2rem;
+    font-size: 2.5rem;
+    cursor: pointer;
+    color: $green;
+
+    &:hover {
+      color: $light-color;
+    }
+  }
+  .search-form {
+    &.active {
+      top: 100%;
+    }
+  }
+}

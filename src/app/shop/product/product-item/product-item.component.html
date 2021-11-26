@@ -1,0 +1,42 @@
+<div class="relative
+              bg-box-product-item
+                overflow-hidden
+                box">
+  <div class="absolute
+                  -top-full left-0
+                  h-120 w-full
+                  flex items-center justify-center
+                  gap-2 bg-product-hover z-10 icons">
+    <a href="#" class="fas fa-shopping-cart
+                           text-center h-20 w-20
+                           bg-white text-green-900
+                           text-4xl leading-15 shadow
+                           hover:bg-btn-green hover:text-white"></a>
+    <a href="#" class="fas fa-heart
+                           text-center h-20 w-20
+                           bg-white text-green-900
+                           text-4xl leading-15 shadow
+                           hover:bg-btn-green hover:text-white"></a>
+    <a href="/Product/1" class="fas fa-eye
+                           text-center h-20 w-20
+                           bg-white text-green-900
+                           text-4xl leading-15 shadow
+                           hover:bg-btn-green hover:text-white"></a>
+  </div>
+  <div class="h-120 w-full overflow-hidden image">
+    <img class="h-full w-full object-cover" src="{{imagePath}}/products/{{Product.id}}.png" alt="">
+  </div>
+  <div class="py-6 px-8 content">
+    <div class="text-3xl text-gray-500 price">$ {{Product.price}}</div>
+    <h3 class="text-4xl text-green-900
+                   py-2 px-0">{{Product.name}}</h3>
+    <div class="text-3xl stars">
+      <i class="fas fa-star text-yellow-300"></i>
+      <i class="fas fa-star text-yellow-300"></i>
+      <i class="fas fa-star text-yellow-300"></i>
+      <i class="fas fa-star text-yellow-300"></i>
+      <i class="far fa-star"></i>
+      <span class="text-gray-500"> (50) </span>
+    </div>
+  </div>
+</div>

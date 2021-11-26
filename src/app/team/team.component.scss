@@ -1,0 +1,34 @@
+$white: #fff;
+$green: #244d4d;
+
+.team .box-container {
+  .box {
+    &:hover {
+      .image img {
+        transform: scale(1.1);
+      }
+      .share {
+        left: 0;
+      }
+    }
+
+    .share {
+      flex-flow: column;
+      a {
+        height: 5rem;
+        width: 5rem;
+        line-height: 5rem;
+        font-size: 2.2rem;
+        color: $white;
+        border: 0.1rem solid $white;
+        text-align: center;
+        margin-bottom: 1rem;
+
+        &:hover {
+          background: $white;
+          color: $green;
+        }
+      }
+    }
+  }
+}

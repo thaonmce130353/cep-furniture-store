@@ -1,0 +1,12 @@
+.content {
+  animation: fadeLeft 0.4s linear 0.4s backwards;
+}
+
+.image img {
+  width: 100%;
+  animation: fadeOut 0.4s linear;
+}
+
+.active-slide {
+  display: flex;
+}

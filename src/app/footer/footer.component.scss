@@ -1,0 +1,27 @@
+$green: #244d4d;
+$light-color: #779;
+
+.footer {
+  .box-container {
+    .box {
+      a {
+        font-size: 1.4rem;
+        color: $light-color;
+        padding: 1rem 0;
+        display: block;
+
+        &:hover {
+          color: $green;
+          i {
+            padding-right: 2rem;
+          }
+        }
+
+        i {
+          padding-right: 0.5rem;
+          color: $green;
+        }
+      }
+    }
+  }
+}

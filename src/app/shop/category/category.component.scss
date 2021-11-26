@@ -1,0 +1,23 @@
+.category .box-container {
+  .box {
+    &:hover {
+      img {
+        filter: invert(1);
+      }
+      h3 {
+        color: white;
+      }
+    }
+  }
+}
+a.active {
+  background-color: #244d4d;
+}
+
+.active h3 {
+  color: #fff;
+}
+
+.active img {
+  filter: invert(1);
+}
