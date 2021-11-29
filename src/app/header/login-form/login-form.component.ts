@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { first } from 'rxjs/operators';
+
+import { AuthenticationService } from 'src/app/authentication.service';
 
 @Component({
   selector: 'app-login-form',
@@ -9,7 +13,20 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 export class LoginFormComponent implements OnInit {
 
   formLogin!: FormGroup;
-  constructor(private fb: FormBuilder) { }
+
+  loading = false;
+  submitted = false;
+  error = '';
+
+  constructor(
+    private fb: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private authenticationService: AuthenticationService) {
+    if (this.authenticationService.currentUserValue) {
+      this.router.navigate(['/']);
+    }
+  }
 
   get username() {
     return this.formLogin.get('txtUsername');
@@ -28,6 +45,28 @@ export class LoginFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.formLogin);
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.formLogin.invalid) {
+      return;
+    }
+
+    this.loading = true;
+    console.log(this.username.value, this.password.value);
+
+    this.authenticationService.login(this.username.value, this.password.value)
+      .pipe(first())
+      .subscribe({
+        next: () => {
+          // get return url from route parameters or default to '/'
+          const returnUrl = this.route.snapshot.queryParams['home'] || '/';
+          this.router.navigate([returnUrl]);
+        },
+        error: error => {
+          this.error = error;
+          this.loading = false;
+        }
+      });
   }
 }

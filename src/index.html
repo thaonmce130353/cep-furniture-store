@@ -19,6 +19,8 @@
   <script>
     $(document).ready(function () {
       $('#search-box').autocomplete({
+        minLength: 3,
+        delay: 500,
         source: "https://localhost:44368/api/products/search"
       });
     });
