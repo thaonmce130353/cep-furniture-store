@@ -31,17 +31,9 @@ export class ProductService {
       .get<CurrentPage>(url)
       .pipe(
         tap(_ => this.log('fetched products !')),
-        catchError(this.handleError<CurrentPage>('get all products', null))
+        catchError(this.handleError<CurrentPage>('get products in page', null))
       );
   }
-
-  // getAll(): Observable<Product[]> {
-  //   return this.http
-  //     .get<Product[]>(`${this.REST_API_SERVICE}/products/all`).pipe(
-  //       tap(_ => this.log('Fetched all products!')),
-  //       catchError(this.handleError<Product[]>('Get all products', []))
-  //     );
-  // }
 
   private log(message: string) {
     console.log('ProductService: ', message);

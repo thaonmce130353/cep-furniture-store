@@ -11,6 +11,8 @@ import { ProductDetailComponent } from './shop/product-detail/product-detail.com
 import { ManagementComponent } from './management/management.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
+import { AuthGuard } from './_helpers/auth.guard';
+
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
@@ -19,8 +21,7 @@ const routes: Routes = [
   { path: 'team', component: TeamComponent },
   { path: 'blog', component: BlogComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'management', component: ManagementComponent },
-  { path: 'shop/product/:id', component: ProductDetailComponent },
+  { path: 'management', component: ManagementComponent, canActivate: [AuthGuard] },
   { path: '**', component: PageNotFoundComponent },
 ];
 

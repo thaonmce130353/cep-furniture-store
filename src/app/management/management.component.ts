@@ -22,7 +22,7 @@ export class ManagementComponent implements OnInit {
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
-    // this.getAllProduct();
+    this.getCurrentProduct();
   }
 
   getCurrentProduct(): void {

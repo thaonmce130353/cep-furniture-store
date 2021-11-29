@@ -14,7 +14,7 @@ export class LoginFormComponent implements OnInit {
 
   formLogin!: FormGroup;
 
-  loading = false;
+  // loading = false;
   submitted = false;
   error = '';
   isLogin: boolean = false;
@@ -55,7 +55,7 @@ export class LoginFormComponent implements OnInit {
       return;
     }
 
-    this.loading = true;
+    // this.loading = true;
 
     this.authenticationService.login(this.username.value, this.password.value)
       .pipe(first())
@@ -70,7 +70,7 @@ export class LoginFormComponent implements OnInit {
         },
         error: error => {
           this.error = error.error.message;
-          this.loading = false;
+          // this.loading = false;
         }
       });
   }
