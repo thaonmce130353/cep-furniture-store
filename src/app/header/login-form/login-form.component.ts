@@ -17,6 +17,7 @@ export class LoginFormComponent implements OnInit {
   loading = false;
   submitted = false;
   error = '';
+  isLogin: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -24,7 +25,9 @@ export class LoginFormComponent implements OnInit {
     private router: Router,
     private authenticationService: AuthenticationService) {
     if (this.authenticationService.currentUserValue) {
-      this.router.navigate(['/']);
+      this.isLogin = true;
+    } else {
+      this.isLogin = false;
     }
   }
 
@@ -46,14 +49,13 @@ export class LoginFormComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-
     // stop here if form is invalid
     if (this.formLogin.invalid) {
+      this.error = "Please enter username and password";
       return;
     }
 
     this.loading = true;
-    console.log(this.username.value, this.password.value);
 
     this.authenticationService.login(this.username.value, this.password.value)
       .pipe(first())
@@ -61,12 +63,21 @@ export class LoginFormComponent implements OnInit {
         next: () => {
           // get return url from route parameters or default to '/'
           const returnUrl = this.route.snapshot.queryParams['home'] || '/';
+          this.isLogin = true;
+          this.formLogin.reset();
+          this.error = "";
           this.router.navigate([returnUrl]);
         },
         error: error => {
-          this.error = error;
+          this.error = error.error.message;
           this.loading = false;
         }
       });
+  }
+
+  logout() {
+    this.authenticationService.logout();
+    this.isLogin = false;
+    this.router.navigate(['/']);
   }
 }

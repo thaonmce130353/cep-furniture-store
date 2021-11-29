@@ -5,7 +5,8 @@
             p-8 flex
             items-center
             justify-center login-form">
-  <form (ngSubmit)="onSubmit()" [formGroup]="formLogin" class="p-7 border border-solid border-green-800">
+  <form (ngSubmit)="onSubmit()" [formGroup]="formLogin" class="p-7 border border-solid border-green-800"
+    *ngIf="!isLogin">
     <h3 class="text-4xl pb-4 text-green-800">login form</h3>
     <input type="email" placeholder="enter your email" class="w-full
                   normal-case text-2xl
@@ -31,10 +32,13 @@
       </div>
     </div>
 
+    <div *ngIf="error" class="text-xl text-red-600 mb-2">{{error}}</div>
+
     <div class="flex items-center gap-2">
       <input type="checkbox" name="" id="remember-me" formControlName="cbRememberMe">
       <label for="remember-me" class="pb-1 cursor-pointer text-2xl">remember me</label>
     </div>
+
     <input type="submit" value="login now" class="mt-4 mr-0 w-full text-center btn">
     <p class="pt-4 text-2xl text-gray-500">forget password?
       <a class="text-green-900 hover:underline" href="#">click here</a>
@@ -43,4 +47,8 @@
       <a class="text-green-900 hover:underline" href="#">create now</a>
     </p>
   </form>
+
+  <div *ngIf="isLogin">
+    <button type="button" class="btn" (click)="logout()">Log out</button>
+  </div>
 </div>

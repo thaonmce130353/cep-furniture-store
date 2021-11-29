@@ -5,7 +5,6 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
-import { Product } from '../Models/Product';
 import { CurrentPage } from '../Models/CurrentPage';
 
 import { Constant } from '../Constant';
