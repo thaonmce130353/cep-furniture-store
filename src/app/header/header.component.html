@@ -3,44 +3,54 @@
                sticky top-0 left-0 right-0
                z-100 bg-light-bg flex
                items-center justify-between
-               header">
+               header shadow">
 
   <a routerLink="/home" class="text-5xl text-green-900 font-bold logo">
     <i class="pr-1 fas fa-lightbulb"></i> furni </a>
-
-  <form class="h-20 w-full -top-full absolute
-                         border-r-0 border-l-0 rounded-none
-                         right-0 left-0 items-center
-                         border border-solid border-green-900
-                         bg-white overflow-hidden flex
-                         md:rounded-5rem
-                         md:border-r md:border-l
-                         md:w-140 md:sticky
-                         lg:w-200
-                         search-form" novalidate [class.hidden]="isManagePageChecked">
-    <input class="h-full w-full
-                  py-0 px-5
-                  text-2xl text-green-800
-                  normal-case " type="text" placeholder="search here..." id="search-box" #keyword [value]="searchKey">
-    <button type="submit" class="text-4xl pr-7
-                  cursor-pointer
-                  text-green-800 hover:text-gray-500
-                  fas fa-search" [routerLink]="['/shop']" [queryParams]="{keyword: keyword.value}"></button>
-  </form>
-  <div *ngIf="searchNames.length > 0 && isShowResult" class="w-200 h-auto
-    bg-white absolute top-1/2 -z-1
-    items-center ml-136 shadow pt-12 pb-4">
-    <ul *ngFor="let pName of searchNames" class="pl-6 py-1 hover:bg-gray-200 cursor-pointer"
-      (click)="onSelectSearchName(pName)">
-      <li class="text-2xl">{{pName}}</li>
-    </ul>
+  <div>
+    <div class="h-20 w-full -top-full absolute
+    border-r-0 border-l-0 rounded-none
+    right-0 left-0 items-center
+    border border-solid border-green-900
+    bg-white overflow-hidden flex
+    md:rounded-5rem
+    md:border-r md:border-l
+    md:w-140 md:sticky
+    lg:w-200
+    search-form" novalidate [class.hidden]="isManagePageChecked">
+      <input class="h-full w-full
+                    py-0 px-5
+                    text-2xl text-green-800
+                    normal-case " type="text" placeholder="search here..." id="search-box" #keyword
+        [value]="searchKey">
+      <button type="submit" class="text-4xl pr-7
+                                  cursor-pointer
+                                  text-green-800 hover:text-gray-500
+                                  fas fa-search" [routerLink]="['/shop']"
+        [queryParams]="{keyword: keyword.value}"></button>
+    </div>
+    <div *ngIf="searchNames.length > 0 && isShowResult" class="w-full h-auto left-0
+                                                              bg-white absolute top-140/100 -z-1
+                                                              ml-0 shadow pt-12 pb-4
+                                                              md:w-140 md:top-1/2 md:left-auto
+                                                              lg:w-200">
+      <ul *ngFor="let pName of searchNames" class="pl-6 py-1 hover:bg-gray-200 cursor-pointer"
+        (click)="onSelectSearchName(pName)">
+        <li class="text-2xl">{{pName}}</li>
+      </ul>
+    </div>
   </div>
+
   <div class="icons">
     <div id="menu-btn" class="fas fa-bars"></div>
     <div id="search-btn" class="fas fa-search md:hidden inline-block" [class.hidden]="isManagePageChecked"></div>
     <div id="cart-btn" class="fas fa-shopping-cart"></div>
     <div id="login-btn" class="fas fa-user"></div>
-    <div id="notify-btn" class="fas fa-bell"><span>{{data.length}}</span></div>
+    <div id="notify-btn" class="fas fa-bell"></div><span class="text-xl py-1 pr-2 pl-1
+      rounded-5rem bg-red-600
+      relative text-white
+      right-4 -top-7">
+      {{data.length}}</span>
   </div>
 
 </header>
