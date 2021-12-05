@@ -8,7 +8,7 @@
   <a routerLink="/home" class="text-5xl text-green-900 font-bold logo">
     <i class="pr-1 fas fa-lightbulb"></i> furni </a>
 
-  <div class="h-20 w-full -top-full absolute
+  <form class="h-20 w-full -top-full absolute
                          border-r-0 border-l-0 rounded-none
                          right-0 left-0 items-center
                          border border-solid border-green-900
@@ -21,23 +21,26 @@
     <input class="h-full w-full
                   py-0 px-5
                   text-2xl text-green-800
-                  normal-case " type="text" placeholder="search here..." id="search-box" #keyword
-      (change)="onChange(keyword.value)" [value]="keyword.value">
+                  normal-case " type="text" placeholder="search here..." id="search-box" #keyword [value]="searchKey">
     <button type="submit" class="text-4xl pr-7
                   cursor-pointer
                   text-green-800 hover:text-gray-500
                   fas fa-search" [routerLink]="['/shop']" [queryParams]="{keyword: keyword.value}"></button>
+  </form>
+  <div *ngIf="searchNames.length > 0 && isShowResult" class="w-200 h-auto
+    bg-white absolute top-1/2 -z-1
+    items-center ml-136 shadow pt-12 pb-4">
+    <ul *ngFor="let pName of searchNames" class="pl-6 py-1 hover:bg-gray-200 cursor-pointer"
+      (click)="onSelectSearchName(pName)">
+      <li class="text-2xl">{{pName}}</li>
+    </ul>
   </div>
-
   <div class="icons">
     <div id="menu-btn" class="fas fa-bars"></div>
     <div id="search-btn" class="fas fa-search md:hidden inline-block" [class.hidden]="isManagePageChecked"></div>
     <div id="cart-btn" class="fas fa-shopping-cart"></div>
     <div id="login-btn" class="fas fa-user"></div>
     <div id="notify-btn" class="fas fa-bell"><span>{{data.length}}</span></div>
-    <!-- <div class="fixed hidden inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" id="my-modal">
-
-    </div> -->
   </div>
 
 </header>

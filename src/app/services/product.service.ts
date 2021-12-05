@@ -25,13 +25,25 @@ export class ProductService {
     var keywordParam = keyword !== "" ? `keyword=${keyword}&` : "";
     var sortByParam = sortBy !== "" ? `sortBy=${sortBy}&sortValue=${sortValue}&` : "";
     var url = `${this.REST_API_SERVICE}/products?${keywordParam}${sortByParam}categoryId=${categoryId}&page=${page}&limit=${limit}`;
-    console.log(url);
 
     return this.http
       .get<CurrentPage>(url)
       .pipe(
         tap(_ => this.log('fetched products !')),
         catchError(this.handleError<CurrentPage>('get products in page', null))
+      );
+  }
+
+  getSearchNamesOfProduct(keyword: string = "")
+    : Observable<string[]> {
+    var keywordParam = keyword !== "" ? `term=${keyword}&` : "";
+    var url = `${this.REST_API_SERVICE}/products/search?${keywordParam}`;
+
+    return this.http
+      .get<string[]>(url)
+      .pipe(
+        tap(_ => this.log('fetched search names of product !')),
+        catchError(this.handleError<string[]>('Get search names ò product', null))
       );
   }
 

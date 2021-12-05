@@ -1,7 +1,9 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, fromEvent } from 'rxjs';
+import { debounceTime, map } from 'rxjs/operators';
 
 import { SignalrService } from '../services/signalr.service';
+import { ProductService } from '../services/product.service';
 
 import { Category } from '../Models/Category';
 
@@ -13,19 +15,41 @@ import { Category } from '../Models/Category';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
 
-  keyword: string = "";
+  searchKey: string = "";
 
   @Input() isManagePageChecked: boolean;
 
   data: Category[] = [];
   unsubscribe$: Subject<boolean> = new Subject();
 
-  constructor(private signalrService: SignalrService) { }
+  searchNames: string[] = [];
+  isShowResult: boolean = true;
+
+  constructor(
+    private signalrService: SignalrService,
+    private productService: ProductService) { }
 
   ngOnInit(): void {
     this.signalrService.startConnection();
     this.signalrService.addTransferCategoryDataListener();
     this.fetchData();
+  }
+
+  ngAfterViewInit() {
+    const searchBox = document.getElementById('search-box');
+    const keyup$ = fromEvent(searchBox, 'keyup');
+
+    keyup$
+      .pipe(
+        map((i: any) => i.currentTarget.value),
+        debounceTime(500)
+      )
+      .subscribe(keyword => {
+        this.productService.getSearchNamesOfProduct(keyword).subscribe(data => {
+          this.searchNames = data;
+          this.isShowResult = true;
+        })
+      });
   }
 
   ngOnDestroy() {
@@ -39,11 +63,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
     });
   }
 
-  onChange(keyword: string) {
-    this.keyword = keyword;
+  onSelectSearchName(keyword: string) {
+    this.searchKey = keyword;
+    this.isShowResult = false;
   }
 
-  ngOnChanges() {
-    console.log(this.isManagePageChecked);
-  }
+  // ngOnChanges() {
+  //   console.log(this.isManagePageChecked);
+  // }
 }

@@ -7,6 +7,7 @@ module.exports = {
   theme: {
     extend: {
       spacing: {
+        '136': '34rem',
         '140': '35rem',
         '120': '30rem',
         '200': '50rem',
@@ -28,7 +29,8 @@ module.exports = {
       '1000': '1000',
       '900': '900',
       '100': '100',
-      '10': '10'
+      '10': '10',
+      '-1': '-1'
     },
     borderRadius: {
       '5rem': '5rem',
