@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   @Input() isManagePageChecked: boolean;
 
-  data: Category[] = [];
+  data: string = '0';
   unsubscribe$: Subject<boolean> = new Subject();
 
   searchNames: string[] = [];

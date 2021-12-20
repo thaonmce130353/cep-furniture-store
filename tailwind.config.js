@@ -15,7 +15,8 @@ module.exports = {
         '100vh': '100vh',
         '9/100': '9%',
         '99/100': '99%',
-        '140/100': '140%'
+        '140/100': '140%',
+        '100/100': '100%'
       }
     },
     flex: {
@@ -37,6 +38,7 @@ module.exports = {
     borderRadius: {
       '5rem': '5rem',
       '2rem': '2rem',
+      'full': '100%'
     },
     backgroundColor: theme => ({
       ...theme('colors'),

@@ -3,14 +3,14 @@ import { Observable, Subject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as signalR from "@aspnet/signalr";
 
-import { Category } from '../Models/Category';
+// import { Category } from '../Models/Category';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SignalrService {
 
-  private data$: Subject<Category[]> = new Subject();
+  private data$: Subject<string> = new Subject();
 
   private hubConnection!: signalR.HubConnection;
 
@@ -29,16 +29,18 @@ export class SignalrService {
   }
 
   addTransferCategoryDataListener = () => {
-    this.hubConnection.on('transfercategorydata', (data) => {
+    this.hubConnection.on('ReceiveMessage', (data) => {
       this.setData(data);
+      console.log("Get data: " + data);
+
     });
   }
 
-  getData(): Observable<Category[]> {
+  getData(): Observable<string> {
     return this.data$.asObservable();
   }
 
-  setData(data: Category[]) {
+  setData(data: string) {
     this.data$.next(data);
   }
 
