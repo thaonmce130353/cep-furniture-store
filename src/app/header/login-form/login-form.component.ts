@@ -19,16 +19,24 @@ export class LoginFormComponent implements OnInit {
   error = '';
   isLogin: boolean = false;
 
+  public userAuthenticated = false;
+
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthenticationService) {
+    private authenticationService: AuthenticationService,
+  ) {
     if (this.authenticationService.currentUserValue) {
       this.isLogin = true;
     } else {
       this.isLogin = false;
     }
+
+    this.authenticationService.loginChanged
+      .subscribe(userAuthenticated => {
+        this.userAuthenticated = userAuthenticated;
+      })
   }
 
   get username() {
@@ -45,6 +53,11 @@ export class LoginFormComponent implements OnInit {
       txtPassword: ['', Validators.required],
       cbRememberMe: [false]
     })
+
+    this.authenticationService.isAuthenticated()
+      .then(userAuthenticated => {
+        this.userAuthenticated = userAuthenticated;
+      })
   }
 
   onSubmit() {
@@ -79,5 +92,13 @@ export class LoginFormComponent implements OnInit {
     this.authenticationService.logout();
     this.isLogin = false;
     this.router.navigate(['/']);
+  }
+
+  loginIdentityServer4() {
+    this.authenticationService.loginOIDC();
+  }
+
+  logoutIdentityServer4() {
+
   }
 }

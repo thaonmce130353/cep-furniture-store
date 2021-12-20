@@ -32,8 +32,6 @@ import { ManagementComponent } from './management/management.component';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
 import { ErrorInterceptor } from './_helpers/error.interceptor';
 
-import { AuthModule, LogLevel } from 'angular-auth-oidc-client';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,20 +63,6 @@ import { AuthModule, LogLevel } from 'angular-auth-oidc-client';
     HttpClientModule,
     NgxPaginationModule,
     FormsModule,
-
-    AuthModule.forRoot({
-      config: {
-        authority: 'https://localhost:5001',
-        redirectUrl: window.location.origin,
-        postLogoutRedirectUri: window.location.origin,
-        clientId: 'WebApp',
-        scope: 'openid profile email offline_access api.WebApp',
-        responseType: 'code',
-        silentRenew: true,
-        useRefreshToken: true,
-        logLevel: LogLevel.Debug,
-      },
-    }),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

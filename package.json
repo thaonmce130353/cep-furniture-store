@@ -26,6 +26,7 @@
     "@microsoft/signalr": "^6.0.0",
     "angular-auth-oidc-client": "^13.1.0",
     "ngx-pagination": "^5.1.1",
+    "oidc-client": "^1.11.5",
     "primeicons": "^5.0.0",
     "primeng": "^13.0.0",
     "rxjs": "~7.4.0",

@@ -30,9 +30,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private productService: ProductService) { }
 
   ngOnInit(): void {
-    this.signalrService.startConnection();
-    this.signalrService.addTransferCategoryDataListener();
-    this.fetchData();
+    // this.signalrService.startConnection();
+    // this.signalrService.addTransferCategoryDataListener();
+    // this.fetchData();
   }
 
   ngAfterViewInit() {

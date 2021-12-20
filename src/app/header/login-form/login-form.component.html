@@ -38,7 +38,8 @@
       <input type="checkbox" name="" id="remember-me" formControlName="cbRememberMe">
       <label for="remember-me" class="pb-1 cursor-pointer text-2xl">remember me</label>
     </div>
-
+    <button type="button" class="btn" (click)="loginIdentityServer4()" *ngIf="!userAuthenticated">Log in</button>&nbsp;
+    <button type="button" class="btn" (click)="logoutIdentityServer4()" *ngIf="userAuthenticated">Log out</button>
     <input type="submit" value="login now" class="mt-4 mr-0 w-full text-center btn">
     <p class="pt-4 text-2xl text-gray-500">forget password?
       <a class="text-green-900 hover:underline" href="#">click here</a>
@@ -47,7 +48,6 @@
       <a class="text-green-900 hover:underline" href="#">create now</a>
     </p>
   </form>
-
   <div *ngIf="isLogin">
     <button type="button" class="btn" (click)="logout()">Log out</button>
   </div>
